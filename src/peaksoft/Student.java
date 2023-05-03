@@ -1,6 +1,7 @@
 package peaksoft;
 
 public class Student {
+    public boolean Shool;
     private Long id;
     private String name;
     private String lastName;
@@ -51,5 +52,8 @@ public class Student {
                 " id " + id +
                 " name " + name +
                 " lastName " + lastName;
+    }
+
+    public void setLastName() {
     }
 }

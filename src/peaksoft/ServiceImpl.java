@@ -1,7 +1,8 @@
 package peaksoft;
 
 public class ServiceImpl implements Service {
-    private Student[] students = new Student[10];
+
+    private final Student[] students;
 
     public ServiceImpl(Student[] students) {
         this.students = students;
@@ -9,26 +10,54 @@ public class ServiceImpl implements Service {
 
     @Override
     public void updateStudent(Long id, String name, String lastName) {
-
+        for (Student student : students) {
+            if (student.getId() == id) {
+                student.setName(name);
+                student.setLastName(lastName);
+            }
+        }
     }
 
     @Override
     public Student getStudentById(Long id) {
-        return null;
+        Student student1 = null;
+        for (Student student : students) {
+            if (student.getId() == id) {
+                student1 = student;
+            }
+
+        }
+        return student1;
+
     }
 
     @Override
     public Boolean getName(String name) {
-        return null;
+        for (Student a : students) {
+            if (a.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public int getCountAge(int age) {
-        return 0;
+        int count = 0;
+        for (Student student : students) {
+            count += student.getAge();
+        }
+        System.out.println(count / students.length);
+        return count;
     }
+
+
+
+
 
     @Override
     public Student[] getAllStudents() {
-        return new Student[0];
+
+        return students;
     }
 }
